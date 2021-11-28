@@ -4,5 +4,4 @@ dlib
 opencv-python
 pandas
 uuid
-os
 random
