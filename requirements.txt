@@ -1,7 +1,7 @@
 aiogram
 imutils
 dlib
-cv2
+opencv-python
 pandas
 uuid
 os
