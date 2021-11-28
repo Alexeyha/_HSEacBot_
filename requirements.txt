@@ -1,5 +1,4 @@
 aiogram
-imutils
 dlib
 opencv-python-headless
 pandas
