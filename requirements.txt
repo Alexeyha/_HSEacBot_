@@ -1,0 +1,9 @@
+aiogram
+logging
+imutils
+dlib
+cv2
+pandas
+uuid
+os
+random
