@@ -1,6 +1,6 @@
 aiogram
 imutils
 dlib
-opencv-python
+opencv-python-headless==4.2.0.32
 pandas
 uuid
