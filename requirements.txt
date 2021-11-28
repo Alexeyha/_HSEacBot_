@@ -1,5 +1,4 @@
 aiogram
-logging
 imutils
 dlib
 cv2

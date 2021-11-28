@@ -1,4 +1,3 @@
-import logging
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
@@ -14,8 +13,6 @@ import database as db
 from photo_proc import imaginate
 
 API_TOKEN = TOKEN
-
-logging.basicConfig(level=logging.INFO)
 
 bot = Bot(token=API_TOKEN)
 
