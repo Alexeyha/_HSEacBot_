@@ -21,7 +21,7 @@ dp = Dispatcher(bot, storage=storage)
 
 
 async def run_command(chat_id):
-    await bot.send_message(chat_id, text="Выберите, что вы хочешь.",
+    await bot.send_message(chat_id, text="Выберите, что вы хотите.",
                            reply_markup=keyboards.greet_after_start())
 
 
@@ -36,7 +36,7 @@ async def run_command_start(message: types.Message):
 async def run_command_help(message: types.Message):
     await message.reply('Мои команды:\nНачать запоминание - выберите курс, студентов которого '
                         'вы хотите запомнить и старайтесь угадывать правильное имя человека по его фото.\n'
-                        'Пополнить базу студентов - отправьте фото студента, а также заполните краткую '
+                        'Пополнить базу студентов - отправьте фото студента, а также заполните краткую информацию'
                         'о нем')
 
 
@@ -91,8 +91,19 @@ async def check_answer(message: types.Message):
 
 @dp.message_handler(commands=['Пополнить'])
 async def run_command_add(message: types.Message):
-    await message.reply('Отправьте фото студента', reply_markup=keyboards.greet_cancel())
-    await stm.fill_up.photo.set()
+    await message.answer('Введите пароль.\nЧтобы не любой, кто захочет, а конкретные люди\nпополняли базу, проверяется пароль.\n'
+                         'Для проверки используйте 1234.', reply_markup=keyboards.greet_cancel())
+    await stm.fill_up.password.set()
+
+
+@dp.message_handler(state=stm.fill_up.password)
+async def check_passwor(message: types.Message):
+    password = message.text
+    if password == '1234':
+        await message.answer('Отправьте фото студента', reply_markup=keyboards.greet_cancel())
+        await stm.fill_up.photo.set()
+    else:
+        await message.answer('Некерный пароль. Попробуйте еще раз или нажмите "Отмена".')
 
 
 @dp.message_handler(content_types=['photo'], state=stm.fill_up.photo)
