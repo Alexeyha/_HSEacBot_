@@ -1,5 +1,5 @@
 # Project exclude paths
 /venv/
-/config.py
-/.idea
-/.svn
+config.py
+.idea
+.svn
